@@ -122,9 +122,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BLL\DepartmentManager.cs" />
     <Compile Include="BLL\EmployeeManager.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\DepartmentGateway.cs" />
-    <Compile Include="DAL\E,mployeeGateway.cs" />
+    <Compile Include="DAL\EmployeeGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -169,6 +170,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

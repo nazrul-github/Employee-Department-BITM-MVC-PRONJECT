@@ -1,0 +1,35 @@
+﻿@using EmployeeDepartmentMvcProject29._09._19.Models
+@model EmployeeDepartmentMvcProject29._09._19.Models.Employee
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Employee employee = Model;
+    Department department = ViewBag.Department;
+}
+
+<h2>Delete Employee</h2>
+<table class="table">
+    <tr>
+        <td>Employee Name</td>
+        <td>@employee.Name</td>
+    </tr><tr>
+        <td>Employee Designation</td>
+        <td>@employee.Designation</td>
+    </tr><tr>
+        <td>Employee NID</td>
+        <td>@employee.NID</td>
+    </tr><tr>
+        <td>Employee JoiningDate</td>
+        <td>@employee.JoiningDate</td>
+    </tr><tr>
+        <td>Employee Designation</td>
+        <td>@employee.Designation</td>
+    </tr><tr>
+        <td>Employee Department</td>
+        <td> @department.DepartmentName</td>
+    </tr><tr>
+        <td>Employee Blood Group</td>
+        <td>@employee.Designation</td>
+    </tr>
+</table>
+<input type="submit" value="Delete" class="btn btn-danger" /> |

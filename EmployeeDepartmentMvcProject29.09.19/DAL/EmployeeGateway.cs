@@ -31,7 +31,7 @@ namespace EmployeeDepartmentMvcProject29._09._19.DAL
                         BloodGroup = reader["BloodGroup"].ToString(),
                         Designation = reader["Designation"].ToString(),
                         JoiningDate = Convert.ToDateTime(reader["JoiningDate"]).Date,
-                        DepartmentId = reader["DepartmentId"].ToString(),
+                        DepartmentId = (int) reader["DepartmentId"],
                         NID = reader["NID"].ToString(),
                     });
                 }
@@ -46,6 +46,7 @@ namespace EmployeeDepartmentMvcProject29._09._19.DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("SP_SaveEmployee", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@EmployeeName", employee.Name);
                 cmd.Parameters.AddWithValue("@Designation", employee.Designation);
                 cmd.Parameters.AddWithValue("@Nid", employee.NID);
@@ -67,6 +68,7 @@ namespace EmployeeDepartmentMvcProject29._09._19.DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("SP_UpdateEmployee", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@EmployeeId", employee.EmployeeId);
                 cmd.Parameters.AddWithValue("@EmployeeName", employee.Name);
                 cmd.Parameters.AddWithValue("@Designation", employee.Designation);

@@ -27,8 +27,8 @@ namespace EmployeeDepartmentMvcProject29._09._19.DAL
                     allDepartments.Add(new Department()
                     {
                        DepartmentId = (int) reader["DepartmentId"],
-                       DepartmentCode = reader["DepartmentName"].ToString(),
-                       DepartmentName = reader["Department"].ToString()
+                       DepartmentCode = reader["DepartmentCode"].ToString(),
+                       DepartmentName = reader["DepartmentName"].ToString()
                     });
                 }
                 reader.Close();

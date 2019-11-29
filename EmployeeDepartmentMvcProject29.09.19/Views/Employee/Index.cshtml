@@ -1,0 +1,48 @@
+﻿@using EmployeeDepartmentMvcProject29._09._19.Models
+@using EmployeeDepartmentMvcProject29._09._19.ViewModels
+@model EmployeeDepartmentMvcProject29._09._19.ViewModels.EmployeeDepartmentViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    EmployeeDepartmentViewModel employeeDepartmentViewModel = Model;
+    List<Employee> employees = employeeDepartmentViewModel.Employees;
+    List<Department> departments = employeeDepartmentViewModel.Departments;
+    int serial = 0;
+}
+
+<h2>Employee Information</h2>
+<div>
+  @Html.ActionLink("Create Employee","Create")
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Sr#</th>
+        <th>Employee Name</th>
+        <th>Employee Designation</th>
+        <th>Employee NID</th>
+        <th>Joining Date</th>
+        <th>Department</th>
+        <th>BloodGroup</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    @foreach (var employee in employees)
+    {
+        serial++;
+        <tr>
+            <td>@serial</td>
+            <td>@employee.Name</td>
+            <td>@employee.Designation</td>
+            <td>@employee.NID</td>
+            <td>@employee.JoiningDate.ToShortDateString()</td>
+            <td>@departments.Single(d=>d.DepartmentId==employee.DepartmentId).DepartmentName</td>
+            <td>@employee.BloodGroup</td>
+            <td>@Html.ActionLink("Edit","Edit",new {id=employee.EmployeeId})</td>
+            <td>@Html.ActionLink("Delete","Delete",new{id = employee.EmployeeId},new{@class= "btn btn-danger" })</td>
+        </tr>
+
+    }
+</table>
+

@@ -12,7 +12,7 @@ namespace EmployeeDepartmentMvcProject29._09._19.Models
         public string Designation { get; set; }
         public string NID { get; set; }
         public DateTime JoiningDate { get; set; }
-        public string DepartmentId { get; set; }
+        public int DepartmentId { get; set; }
         public string BloodGroup { get; set; }
 
         public Department Department { get; set; }
