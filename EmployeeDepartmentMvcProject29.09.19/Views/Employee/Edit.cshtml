@@ -12,38 +12,38 @@
 
 @if (@isExist)
 {<div>
-     <p class="alert alert-danger">Employee NID already Exist</p>
- </div>
+        <p class="alert alert-danger">Employee NID already Exist</p>
+    </div>
 }
 
-<hr/>
-<form method="post" id="">
-    <input type="hidden" name="EmployeeId" value="@employee.EmployeeId"/>
+<hr />
+<form method="post" id="editForm">
+    <input type="hidden" name="EmployeeId" value="@employee.EmployeeId" />
     <div class="form-group">
         <label for="employeeName">Employee Name</label>
-        <input type="text" id="employeeName" name="Name"  class="form-control" value="@employee.Name"/>
+        <input type="text" id="employeeName" name="Name" class="form-control" value="@employee.Name" />
     </div>
     <div class="form-group">
         <label for="employeeDesignation">Designation</label>
-        <input type="text" id="employeeDesignation" class="form-control" value="@employee.Designation" name="Designation"/>
+        <input type="text" id="employeeDesignation" class="form-control" value="@employee.Designation" name="Designation" />
     </div>
     <div class="form-group">
         <label for="employeeNID">NID</label>
-        <input type="text" id="employeeNID" class="form-control" value="@employee.NID" name="NID"/>
+        <input type="text" id="employeeNID" class="form-control" value="@employee.NID" name="NID" />
     </div>
     <div class="form-group">
-    <label for="employeeJoiningDate">Joining Date</label>
-    <input type="text" id="employeeJoiningDate" class="form-control" value="@employee.JoiningDate" name="JoiningDate"/>
+        <label for="employeeJoiningDate">Joining Date</label>
+        <input type="text" id="employeeJoiningDate" class="form-control" value="@employee.JoiningDate" name="JoiningDate" />
     </div>
     <div class="form-group">
-    <label for="employeeDepartmentId">Department</label>
-    <select name="DepartmentId" id="employeeDepartmentId" class="form-control">
-        <option value="0">--Select Department--</option>
-        @foreach (var adepartment in aldepartment)
-        {
-            <option selected="@employee.DepartmentId" value="@adepartment.DepartmentId">@adepartment.DepartmentName</option>
-        }
-    </select>
+        <label for="employeeDepartmentId">Department</label>
+        <select name="DepartmentId" id="employeeDepartmentId" class="form-control">
+            <option value="0">--Select Department--</option>
+            @foreach (var adepartment in aldepartment)
+            {
+                <option selected="@employee.DepartmentId" value="@adepartment.DepartmentId">@adepartment.DepartmentName</option>
+            }
+        </select>
     </div>
     <div class="form-group">
         <label for="employeeBloodGroup">Blood Group</label>
@@ -59,8 +59,55 @@
             new SelectListItem(){Text = "AB-",Value = "AB-"},
         },"--Select BloodGroup--",new{@class = "form-control",@id= "employeeBloodGroup" })
     </div>
-    <input type="submit" class="btn btn-success"/>
+    <input type="submit" class="btn btn-success" />
 </form>
 @Html.ActionLink("Go to employee list", "Index")
 
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#editForm").validate({
+                rules: {
+                    Name: { required: true },
+                    Designation: { required: true },
+                    NID: {
+                        required: true,
+                        minlength: 16
+                    },
+                    JoiningDate: {
+                        required: true
 
+                    },
+                    DepartmentId: {
+                        min: 1
+                    },
+                    BloodGroup: {
+                        min: ""
+                    }
+
+                },
+                messages: {
+                    Name: "Name is required",
+                    Designation: { require: "Designation is required" },
+                    NID: {
+                        required: "Nid is required",
+                        minlength: "NID must be 16 character"
+                    },
+                    JoiningDate: {
+                        required: "Joining date is required"
+
+                    },
+                    DepartmentId: {
+                        min: "Pleased select department"
+                    },
+                    BloodGroup: {
+                        min: "Please select Blood Group"
+                    }
+                }
+            });
+        })
+    </script>
+}

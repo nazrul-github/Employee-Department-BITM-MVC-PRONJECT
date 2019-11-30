@@ -32,4 +32,12 @@
         <td>@employee.Designation</td>
     </tr>
 </table>
-<input type="submit" value="Delete" class="btn btn-danger" /> |
+<input type="submit" value="Delete" class="btn btn-danger" /> 
+@Html.ActionLink("Delete","Delete",null,new{@onclick = "ConfirmDelete" })
+
+@section scripts
+{
+    function ConfirmDelete() {
+    return confirm("Are you sure you want to delete?");
+    }
+}

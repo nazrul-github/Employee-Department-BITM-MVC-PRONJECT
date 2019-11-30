@@ -15,7 +15,7 @@
 
 
 <hr />
-<form method="post" id="">
+<form method="post" id="CreateEmployeeForm">
     <input type="hidden" name="EmployeeId" />
     <div class="form-group">
         <label for="employeeName">Employee Name</label>
@@ -47,6 +47,7 @@
         <label for="employeeBloodGroup">Blood Group</label>
         @Html.DropDownList("BloodGroup",new List<SelectListItem>()
         {
+            new SelectListItem(){Text = "--Select Blood Group--",Value = "0",Selected = true},
             new SelectListItem(){Text = "A+",Value = "A+"},
             new SelectListItem(){Text = "A-",Value = "A-"},
             new SelectListItem(){Text = "B+",Value = "B+"},
@@ -62,3 +63,55 @@
 @Html.ActionLink("Go to employee list", "Index")
 
 
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#CreateEmployeeForm").validate({
+                rules: {
+                    Name: { required: true },
+                    Designation: { required: true },
+                    NID: {
+                        required: true,
+                        minlength: 16
+                    },
+                    JoiningDate: {
+                        required: true
+
+                    },
+                    DepartmentId: {
+                        min: 1
+                    },
+                    BloodGroup: {
+                        min: 1
+                    }
+
+                },
+                messages: {
+                    Name: "Name is required",
+                    Designation: { require: "Designation is required" },
+                    NID: {
+                        required: "Nid is required",
+                        minlength: "NID must be 16 character"
+                    },
+                    JoiningDate: {
+                        required: "Joining date is required"
+
+                    },
+                    DepartmentId: {
+                        min: "Pleased select department"
+                    },
+                    BloodGroup: {
+                        min: "Please select Blood Group"
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+
+    </script>
+
+}

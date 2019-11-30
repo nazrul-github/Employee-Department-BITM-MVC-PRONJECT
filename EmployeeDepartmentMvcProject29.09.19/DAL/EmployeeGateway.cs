@@ -91,6 +91,7 @@ namespace EmployeeDepartmentMvcProject29._09._19.DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("SP_DeleteEmployee", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@EmployeeId", employee.EmployeeId);
                 connection.Open();
                 int rowAffected = cmd.ExecuteNonQuery();
