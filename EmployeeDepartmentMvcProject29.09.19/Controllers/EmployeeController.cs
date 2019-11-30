@@ -66,22 +66,24 @@ namespace EmployeeDepartmentMvcProject29._09._19.Controllers
             ViewBag.Department = departmentManager.GetAllDepartments();
             return View(employee);
         }
-      /*  [HttpGet]
-        public ActionResult Delete(int id)
+       [HttpGet]
+       [ActionName("Delete")]
+        public ActionResult Delete_Get(int id)
         {
              Employee employee = employeeManager.GetAllEmployee().Single(e => e.EmployeeId == id);
-            bool isDeleted = employeeManager.DeleteEmployee(employee);
+           
            ViewBag.Department = departmentManager.GetAllDepartments()
                 .Single(d => d.DepartmentId == employee.DepartmentId);
-            return RedirectToAction("Index");
-        }*/
+            return View(employee);
+        }
       
 
         [HttpPost]
-        public ActionResult Delete(int id)
+        [ActionName("Delete")]
+        public ActionResult Delete_post(int id)
         {
-            Employee employee = employeeManager.GetAllEmployee().Single(e => e.EmployeeId == id);
-            bool isDeleted = employeeManager.DeleteEmployee(employee);
+            Employee aemployee = employeeManager.GetAllEmployee().Single(e => e.EmployeeId == id);
+            bool isDeleted = employeeManager.DeleteEmployee(aemployee);
             return RedirectToAction("Index");
         }
     }

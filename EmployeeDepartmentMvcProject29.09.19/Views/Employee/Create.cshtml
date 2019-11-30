@@ -47,7 +47,7 @@
         <label for="employeeBloodGroup">Blood Group</label>
         @Html.DropDownList("BloodGroup",new List<SelectListItem>()
         {
-            new SelectListItem(){Text = "--Select Blood Group--",Value = "0",Selected = true},
+            new SelectListItem(){Text = "--Select Blood Group--",Value = "",Selected = true},
             new SelectListItem(){Text = "A+",Value = "A+"},
             new SelectListItem(){Text = "A-",Value = "A-"},
             new SelectListItem(){Text = "B+",Value = "B+"},
@@ -85,7 +85,7 @@
                         min: 1
                     },
                     BloodGroup: {
-                        min: 1
+                       required:true
                     }
 
                 },
@@ -104,7 +104,7 @@
                         min: "Pleased select department"
                     },
                     BloodGroup: {
-                        min: "Please select Blood Group"
+                        required: "Please select Blood Group"
                     }
                 }
             });
