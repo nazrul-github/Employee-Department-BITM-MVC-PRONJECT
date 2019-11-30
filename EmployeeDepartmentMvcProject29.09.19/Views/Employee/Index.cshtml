@@ -40,7 +40,9 @@
             <td>@departments.Single(d=>d.DepartmentId==employee.DepartmentId).DepartmentName</td>
             <td>@employee.BloodGroup</td>
             <td>@Html.ActionLink("Edit","Edit",new {id=employee.EmployeeId})</td>
-            <td>@Html.ActionLink("Delete","Delete",new{id = employee.EmployeeId},new{@class= "btn btn-danger" })</td>
+            <td>@Html.BeginForm("Delete","Employee"){
+                <input type="submit" value="Delete" onclick= "return confirm('Are you sure you want to delete this item?');"/>
+                }</td>
         </tr>
 
     }
