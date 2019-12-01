@@ -67,30 +67,40 @@
 {
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-        $(document).ready(function() {
-            $("#editForm").validate({
-                rules: {
-                    Name: { required: true },
-                    Designation: { required: true },
-                    NID: {
-                        required: true,
-                        minlength: 16
-                    },
-                    JoiningDate: {
-                        required: true
+        $(function() {
+            $("#employeeJoiningDate").datepicker({
+                dateFormat: "dd / mm / yy",
+            changeMonth: true,
+                changeYear: true
+        });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+                $("#editForm").validate({
+                    rules: {
+                        Name: { required: true, number: false },
+                        Designation: { required: true },
+                        NID: {
+                            required: true,
+                            minlength: 16
+                        },
+                        JoiningDate: {
+                            required: true,
+                            date: true
+                        },
+                        DepartmentId: {
+                            min: 1
+                        },
+                        BloodGroup: {
+                            min: ""
+                        }
 
                     },
-                    DepartmentId: {
-                        min: 1
-                    },
-                    BloodGroup: {
-                        min: ""
-                    }
-
-                },
-                messages: {
-                    Name: "Name is required",
+                    messages: {
+                        Name: { required:"Name is required",number:"Please enter a valid name"},
                     Designation: { require: "Designation is required" },
                     NID: {
                         required: "Nid is required",
