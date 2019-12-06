@@ -48,8 +48,8 @@ namespace EmployeeDepartmentMvcProject29._09._19.BLL
             if (employee.EmployeeId!=0)
             {
                 Employee aEmployee = employeeGateway.GetAllEmployees().Single(e => e.EmployeeId == employee.EmployeeId);
-                bool isExist2 = employeeGateway.GetAllEmployees().Any(e => e.NID == employee.NID && e.NID != aEmployee.NID);
-                return isExist2;
+                bool isNIDForCurrentEmploye = employeeGateway.GetAllEmployees().Any(e => e.NID == employee.NID && e.NID != aEmployee.NID);
+                return isNIDForCurrentEmploye;
             }
             bool isExist =  employeeGateway.GetAllEmployees().Any(e => e.NID == employee.NID);
             return isExist;

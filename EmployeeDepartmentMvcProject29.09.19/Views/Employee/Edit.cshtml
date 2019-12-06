@@ -18,7 +18,6 @@
 
 <hr />
 <form method="post" id="editForm">
-    <input type="hidden" name="EmployeeId" value="@employee.EmployeeId" />
     <div class="form-group">
         <label for="employeeName">Employee Name</label>
         <input type="text" id="employeeName" name="Name" class="form-control" value="@employee.Name" />
@@ -59,6 +58,7 @@
             new SelectListItem(){Text = "AB-",Value = "AB-"},
         },"--Select BloodGroup--",new{@class = "form-control",@id= "employeeBloodGroup" })
     </div>
+    <input type="hidden" name="EmployeeId" value="@employee.EmployeeId" />
     <input type="submit" class="btn btn-success" />
 </form>
 @Html.ActionLink("Go to employee list", "Index")
